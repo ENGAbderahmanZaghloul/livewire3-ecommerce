@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('image')->nullable();
+            $table->string('images')->nullable();
             $table->text('description')->nullable();
             $table->boolean('is_active')->default(true);
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();

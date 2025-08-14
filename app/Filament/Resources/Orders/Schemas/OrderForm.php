@@ -10,7 +10,7 @@ use Filament\Forms\Components\ToggleButtons;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\Repeater;
 use App\Models\Product;
-use Illuminate\Support\Number as SupportNumber;
+use Illuminate\Support\Number ;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Hidden;
 
@@ -139,7 +139,7 @@ class OrderForm
                         ])->columns(12),
                         Placeholder::make('grand_total_placeholder')
                             ->label('Grand Total')
-                            ->content(function( $get ){
+                            ->content(function( $get , $set ){
                                 $total = 0;
                                 if(!$repeaters = $get('items')){
                                     return $total;
@@ -147,7 +147,9 @@ class OrderForm
                                 foreach($repeaters as $key =>$repeater){ // key is amethod return the index of the repeater
                                     $total += $get("items.{$key}.total_amount");
                                 }
-                                return SupportNumber::currency($total,'USD'); // fetch  the amount as a currency
+
+                                $set('grand_total', $total);
+                                return Number::currency($total,'USD'); // fetch  the amount as a currency
 
                             }),
                             Hidden::make('grand_total')

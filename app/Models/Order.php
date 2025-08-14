@@ -20,11 +20,11 @@ class Order extends Model
         'shipping_amount',
         'shipping_method',
     ];
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
-    public function OrderItems()
+    public function items()
     {
         return $this->hasMany(OrderItem::class);
     }

@@ -9,6 +9,7 @@ use Filament\Forms\Pages\CreateRecord;
 
 class UserForm
 {
+
     public static function configure(Schema $schema): Schema
     {
         return $schema

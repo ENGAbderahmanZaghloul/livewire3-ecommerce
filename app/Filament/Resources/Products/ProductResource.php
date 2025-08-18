@@ -22,7 +22,9 @@ class ProductResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Squares2x2;
 
-    protected static ?string $recordTitleAttribute = 'ProductResource';
+    protected static ?string $recordTitleAttribute = 'name';
+
+    protected static ?int $navigationSort = 4;
 
     public static function form(Schema $schema): Schema
     {
@@ -39,7 +41,7 @@ class ProductResource extends Resource
         return ProductsTable::configure($table);
     }
 
-    
+
     public static function getRelations(): array
     {
         return [
